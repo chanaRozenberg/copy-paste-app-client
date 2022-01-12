@@ -1,0 +1,15 @@
+<button mat-raised-button type="submit" *ngIf = "!isPasteToSave" (click)="saveText()">save</button>   
+    <form [formGroup]="formGroup"> 
+        <mat-form-field>  
+                <textarea matInput formControlName="text" rows="10" cols="50">       
+            </textarea>
+        </mat-form-field>   
+        <br/>
+        <span *ngFor="let t of textById | async" >
+            <br/>
+            <app-delete (refresh) = "refreshTexts(t.id)" [id] = "t.id" [text] = "t.text"></app-delete>
+            <button  mat-raised-button type="submit" (click)="saveText(t.id)">save</button>    
+        </span>
+    <br/>    
+</form>
+    

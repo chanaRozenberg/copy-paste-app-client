@@ -1,0 +1,17 @@
+<div>
+  
+  <app-board (refresh)="refreshTexts()"></app-board>
+  <b> history:</b>
+  <table>
+      <tr>
+        <th>link</th>
+        <th>text</th>
+        <th>delete</th>
+      </tr>
+      <tr  *ngFor = "let text of texts | async">
+        <td>localhost:4200/controlc/<span [innerText]="text.id"></span></td>
+        <td><span [innerText] = "text.text"></span></td>
+        <td><app-delete (refresh) = "refreshTexts()" [id] = "text.id" [text] = "text.text"></app-delete></td>
+      </tr>
+    </table>
+</div>
